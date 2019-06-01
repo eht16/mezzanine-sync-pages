@@ -1,0 +1,3 @@
+include LICENSE
+include README.md
+recursive-include mezzanine_sync_pages *.py *.html

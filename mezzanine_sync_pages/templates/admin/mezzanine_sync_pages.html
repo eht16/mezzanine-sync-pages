@@ -1,0 +1,62 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <style>
+        .module {
+            margin: 10px 0 20px 0;
+            border-bottom: #fff;}
+        .bordered {
+            padding: 5px 10px;
+            margin: 0;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #ddd;
+        }
+        .spaced {
+            margin-top: 10px;
+        }
+        .bordered input[type="checkbox"] {
+            margin-left: 10px;
+        }
+        #content-main pre {
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+    <div class="result-list-container">
+        <form method="post" class="change-form" id="sync-pages-form">
+            {% csrf_token %}
+
+            <div class="module">
+                <h2>Sync</h2>
+                <div class="bordered">
+                    <p class="spaced">
+                        Press "<b>Sync Pages</b>" to synchronize
+                        all pages in the site with the contents of the GIT repository.
+                    </p>
+                    <p class="spaced">
+                        <label for="id_exec_git_pull">Execute "git pull"</label>
+                        <input type="checkbox" name="exec_git_pull" id="id_exec_git_pull" class="booleanfield"{% if exec_git_pull %} checked{% endif %}>
+                    </p>
+                    <p class="spaced">
+                        <input type="submit" class="default" value="Sync Pages" />
+                    </p>
+                </div>
+            </div>
+
+            {% if request.POST %}
+            <div class="module">
+                <h2>Output</h2>
+                <pre class="bordered">{{ output }}</pre>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}
