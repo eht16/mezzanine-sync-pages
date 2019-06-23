@@ -76,6 +76,11 @@ synchronization of the pages to Mezzanine.
 ChangeLog
 ---------
 
+### 1.0.1 / 2019-06-23
+
+- Add trailing new line only if content is not empty
+  (fixes crashing on empty pages when dumping)
+
 ### 1.0.0 / 2019-06-01
 
 - Initial release
