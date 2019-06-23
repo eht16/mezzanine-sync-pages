@@ -71,7 +71,7 @@ class DumpPagesController(SyncPagesBase):
 
     # ----------------------------------------------------------------------
     def _ensure_trailing_new_line(self, content):
-        if not content[-1] == '\n':
+        if content and content[-1] != '\n':
             content = '{}\n'.format(content)
 
         return content
